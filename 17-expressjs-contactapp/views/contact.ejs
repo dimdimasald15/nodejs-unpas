@@ -1,0 +1,44 @@
+<div class="row mt-3">
+  <h3>Contact App</h3>
+  <div class="col-md-8">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th width="5%">No</th>
+            <th>Nama</th>
+            <th>No HP</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(contacts.length === 0){ %>
+          <tr>
+            <td colspan="4">
+              <div class="alert alert-danger fw-bold" role="alert">
+                Data kontak masih kosong <br />
+                <a href="#" class="alert-link fw-normal">&laquo; back</a>
+              </div>
+            </td>
+          </tr>
+          <% } else {%> <% let no=1; %> <% contacts.forEach((val, i)=> { %>
+          <tr>
+            <td><%= no++ %></td>
+            <td><%= val.nama %></td>
+            <td><%= val.nohp %></td>
+            <td>
+              <a
+                href="/contact/<%= val.nama %>"
+                class="btn btn-success badge rounded-pill"
+              >
+                <i class="bi bi-info-circle"></i> Detail
+              </a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+        <% }%>
+      </table>
+    </div>
+  </div>
+</div>

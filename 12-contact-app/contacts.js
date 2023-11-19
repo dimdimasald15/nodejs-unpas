@@ -56,6 +56,7 @@ const listContact = () => {
     console.log(`${i + 1}. ${val.nama} - ${val.noHp}`);
   });
 };
+
 const detailContact = (nama) => {
   const contacts = loadContact();
   const contact = contacts.find((val) => val.nama.toLowerCase() === nama.toLowerCase());
