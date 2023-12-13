@@ -1,0 +1,23 @@
+<h1>Ini adalah halaman Home</h1>
+<h3>Selamat datang Admin</h3>
+<h4>Daftar Mahasiswa</h4>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let no=1; %> <% mhs.forEach((val, i) => { %>
+      <tr>
+        <td><%= no++ %></td>
+        <td><%= val.nama %></td>
+        <td><%= val.email %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
