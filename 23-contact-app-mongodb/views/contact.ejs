@@ -1,0 +1,68 @@
+<div class="row mt-3">
+  <div class="col-md-8">
+    <h3>Contact App</h3>
+    <a href="contact/add" class="btn btn-primary">Tambah Data</a>
+    <% if(msg.length !==0){ %>
+      <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+        <strong>Yeay!</strong>
+        <%= msg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <% } %>
+
+        <div class="table-responsive my-3">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th width="5%">No</th>
+                <th>Nama</th>
+                <th>No HP</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(contacts.length===0){ %>
+                <tr>
+                  <td colspan="4">
+                    <div class="alert alert-danger fw-bold" role="alert">
+                      Data kontak masih kosong <br />
+                      <a href="#" class="alert-link fw-normal">&laquo; back</a>
+                    </div>
+                  </td>
+                </tr>
+                <% } else {%>
+                  <% let no=1; %>
+                    <% contacts.forEach((val, i)=> { %>
+                      <tr>
+                        <td>
+                          <%= no++ %>
+                        </td>
+                        <td>
+                          <%= val.nama %>
+                        </td>
+                        <td>
+                          <%= val.nohp %>
+                        </td>
+                        <td>
+                          <a href="/contact/<%= val.id %>" class="btn btn-success badge rounded-pill">
+                            <i class="bi bi-info-circle"></i> Detail
+                          </a>
+                          <a href="/contact/edit/<%= val.id %>" class="btn btn-warning badge rounded-pill"><i
+                              class="bi bi-pencil-square"></i> Edit
+                          </a>
+                          <form class="d-inline"  action="/contact?_method=DELETE" method="POST" onclick="return confirm('Hapus data kontak <%= val.nama %>?')">
+                            <input type="hidden" name="id" id="id" value="<%= val.id %>">
+                            <input type="hidden" name="nama" id="nama" value="<%= val.nama %>">
+                            <button class="btn btn-danger badge rounded-pill">
+                              <i class="bi bi-trash"></i> Hapus
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      <% }) %>
+            </tbody>
+            <% }%>
+          </table>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row my-3">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-body">
+        <h5 class="card-title">Form <%= title %></h5>
+        <% if(typeof errors !='undefined' ){ %>
+          <div class="alert alert-danger" role="alert">
+            <p class="fw-bold">Terjadi Kesalahan!</p>
+            <ul>
+              <% errors.forEach((err, i)=>{ %>
+                <li>
+                  <%= err.msg %>
+                </li>
+                <% }) %>
+            </ul>
+          </div>
+          <% } %>
+            <form action="<%= action %>" method="POST">
+              <input type="hidden" id="id" name="id" value="<%= contact._id %>">
+              <div class="mb-3">
+                <label for="nama" class="form-label">Nama Kontak</label>
+                <input type="hidden" id="oldNama" name="oldNama" value="<%= contact.oldNama || contact.nama %>"/>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="lebah ganteng" value="<%= contact.nama %>" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
+                value="<%= contact.email %>" required />
+              </div>
+              <div class="mb-3">
+                <label for="nohp" class="form-label">No Handphone</label>
+                <input type="text" class="form-control" id="nohp" name="nohp" placeholder="08xxxxxxxxx" value="<%= contact.nohp %>" required />
+              </div>
+              <div class="mb-3 d-flex justify-content-end">
+                <a href="/contact" class="btn btn-secondary mx-2" type="button">Cancel</a>
+                <% if(title == "Edit Contact"){ %>
+                  <button class="btn btn-success" type="submit">Update</button>
+                <% }else{ %>
+                <button class="btn btn-success" type="submit">Submit</button>
+                <% } %>
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
